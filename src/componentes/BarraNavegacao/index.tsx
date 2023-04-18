@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import BotaoNavegacao from "../BotaoNavegacao"
 import ModalCadastroUsuario from "../ModalCadastroUsuario"
 import logo from './assets/logo.png'
@@ -10,6 +10,13 @@ import ModalLoginUsuario from "../ModalLoginUsuario"
 const BarraNavegacao = () => {
     const [modalCadastroAberta, setModalCadastroAberta] = useState(false);
     const [modalLoginAberta, setModalLoginAberta] = useState(false);
+    const token = sessionStorage.getItem('token')
+    const [userLogado, setUserLogado] = useState<boolean>(token!= null);
+ 
+    const aoFazerLogin =  () => {
+        setModalLoginAberta(false)
+        setUserLogado(true)
+    }
 
     return (
     <nav className="ab-navbar">
@@ -50,28 +57,46 @@ const BarraNavegacao = () => {
                 </ul>
             </li>
         </ul>
+    
         <ul className="acoes">
-            <li>
-                <BotaoNavegacao 
-                    texto="Login" 
-                    textoAltSrc="Icone representando um usuário" 
-                    imagemSrc={usuario}
-                    onClick={() => setModalLoginAberta(true)}
-                 
-                />
-            </li>
-            <li>
-                <BotaoNavegacao
-                    texto="Cadastrar-se"
-                    textoAltSrc="Icone representando um usuário"
-                    imagemSrc={usuario}
-                    onClick={() => setModalCadastroAberta(true)}
-                />
-                
-                <ModalLoginUsuario aberta={modalLoginAberta} aoFechar={() => setModalLoginAberta(false)}></ModalLoginUsuario>
-                <ModalCadastroUsuario aberta={modalCadastroAberta} aoFechar={() => setModalCadastroAberta(false)}/>
-            </li>
+            {! userLogado && 
+                <>
+                    <li>
+                        <BotaoNavegacao 
+                            texto="Login" 
+                            textoAltSrc="Icone representando um usuário" 
+                            imagemSrc={usuario}
+                            onClick={() => setModalLoginAberta(true)}
+                        />
+                    </li>
+                    <li>
+                        <BotaoNavegacao
+                            texto="Cadastrar-se"
+                            textoAltSrc="Icone representando um usuário"
+                            imagemSrc={usuario}
+                            onClick={() => setModalCadastroAberta(true)}
+                        />
+                    </li>
+                </>
+            }
+            {userLogado && 
+                <>
+                    <li>
+                        <Link to="minha-conta">minha conta</Link>
+                    </li>
+                </>
+            }
         </ul>
+        <ModalCadastroUsuario 
+            aberta={modalCadastroAberta} 
+            aoFechar={() => setModalCadastroAberta(false)}
+        />
+
+        <ModalLoginUsuario 
+            aberta={modalLoginAberta} 
+            aoFechar={() => setModalLoginAberta(false)}
+            aoFazerLogin={aoFazerLogin}
+        />
     </nav>)
 }
 

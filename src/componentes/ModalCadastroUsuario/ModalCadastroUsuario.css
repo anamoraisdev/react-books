@@ -11,9 +11,9 @@
 }
 
 .corpoModalCadastro form .acoes {
-    margin-top: 48px;
+    margin-top: 0.5rem;
     text-align: center;
 }
-.item{
+.item-cadastro{
     display: flex;
 }

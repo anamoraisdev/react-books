@@ -75,7 +75,7 @@ const ModalCadastroUsuario = ({aberta, aoFechar}: PropsModalCadastro) => {
                     value={endereco}
                     onChange={setEndereco}
                 />
-                <div className="item">
+                <div className="item-cadastro">
                     <AbCampoTexto 
                         label="Complemento"
                         value={complemento}
@@ -87,7 +87,7 @@ const ModalCadastroUsuario = ({aberta, aoFechar}: PropsModalCadastro) => {
                         onChange={setCep}
                     />
                 </div>
-                <div className="item">
+                <div className="item-cadastro">
                     <AbCampoTexto 
                         label="Senha"
                         value={senha}

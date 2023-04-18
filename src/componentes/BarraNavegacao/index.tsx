@@ -82,7 +82,7 @@ const BarraNavegacao = () => {
             {userLogado && 
                 <>
                     <li>
-                        <Link to="minha-conta">minha conta</Link>
+                        <Link to="/minhaconta">minha conta</Link>
                     </li>
                 </>
             }

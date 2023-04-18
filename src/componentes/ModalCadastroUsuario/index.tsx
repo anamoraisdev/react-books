@@ -75,28 +75,32 @@ const ModalCadastroUsuario = ({aberta, aoFechar}: PropsModalCadastro) => {
                     value={endereco}
                     onChange={setEndereco}
                 />
-                <AbCampoTexto 
-                    label="Complemento"
-                    value={complemento}
-                    onChange={setComplemento}
-                />
-                <AbCampoTexto 
-                    label="CEP"
-                    value={cep}
-                    onChange={setCep}
-                />
-                <AbCampoTexto 
-                    label="Senha"
-                    value={senha}
-                    onChange={setSenha}
-                    type="password"
-                />
-                <AbCampoTexto 
-                    label="Confirmação da senha"
-                    value={senhaConfirmada}
-                    onChange={setSenhaConfirmada}
-                    type="password"
-                />
+                <div className="item">
+                    <AbCampoTexto 
+                        label="Complemento"
+                        value={complemento}
+                        onChange={setComplemento}
+                    />
+                    <AbCampoTexto 
+                        label="CEP"
+                        value={cep}
+                        onChange={setCep}
+                    />
+                </div>
+                <div className="item">
+                    <AbCampoTexto 
+                        label="Senha"
+                        value={senha}
+                        onChange={setSenha}
+                        type="password"
+                    />
+                    <AbCampoTexto 
+                        label="Confirmação da senha"
+                        value={senhaConfirmada}
+                        onChange={setSenhaConfirmada}
+                        type="password"
+                    />
+                </div>
                 <div className="acoes">
                     <AbBotao texto="Cadastrar"/>
                 </div>

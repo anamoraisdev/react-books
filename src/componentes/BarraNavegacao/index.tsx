@@ -5,9 +5,11 @@ import ModalCadastroUsuario from "../ModalCadastroUsuario"
 import logo from './assets/logo.png'
 import usuario from './assets/usuario.svg'
 import './BarraNavegacao.css'
+import ModalLoginUsuario from "../ModalLoginUsuario"
 
 const BarraNavegacao = () => {
     const [modalCadastroAberta, setModalCadastroAberta] = useState(false);
+    const [modalLoginAberta, setModalLoginAberta] = useState(false);
 
     return (
     <nav className="ab-navbar">
@@ -50,7 +52,13 @@ const BarraNavegacao = () => {
         </ul>
         <ul className="acoes">
             <li>
-                <BotaoNavegacao texto="Login" textoAltSrc="Icone representando um usuário" imagemSrc={usuario} />
+                <BotaoNavegacao 
+                    texto="Login" 
+                    textoAltSrc="Icone representando um usuário" 
+                    imagemSrc={usuario}
+                    onClick={() => setModalLoginAberta(true)}
+                 
+                />
             </li>
             <li>
                 <BotaoNavegacao
@@ -60,6 +68,7 @@ const BarraNavegacao = () => {
                     onClick={() => setModalCadastroAberta(true)}
                 />
                 
+                <ModalLoginUsuario aberta={modalLoginAberta} aoFechar={() => setModalLoginAberta(false)}></ModalLoginUsuario>
                 <ModalCadastroUsuario aberta={modalCadastroAberta} aoFechar={() => setModalCadastroAberta(false)}/>
             </li>
         </ul>

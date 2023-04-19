@@ -1,19 +1,20 @@
 import { Link, Outlet } from "react-router-dom";
-
+import './styles/paginaBaseLogado.css'
 
 const PaginaBaseLogado = () => {
     return(
         <>
-            <h1>Minha conta</h1>
-            <section>
-                <div>
-                    <ul>
-                        <li><Link to='/minhaconta/pedidos'>Pedidos</Link></li>
-                        <li><Link to='/minhaconta/trocas'>Trocas</Link></li>
-                        <li><Link to='/minhaconta/cupons'>Cupons</Link></li>
-                        <li><Link to='/minhaconta/dados'>Seus dados</Link></li>
-                    </ul>
-                </div>
+            <h1 className="tituloMinhaConta">Minha conta</h1>
+            <section className="sectionMinhaConta">
+                <ul className="listaMinhaConta">
+                    <Link className="item-minhaconta" to='/minhaconta/pedidos'>Pedidos</Link>
+                    <hr/>
+                    <Link className="item-minhaconta"to='/minhaconta/trocas'>Trocas</Link>
+                    <hr/>
+                    <Link className="item-minhaconta"to='/minhaconta/cupons'>Cupons</Link>
+                    <hr/>
+                    <Link className="item-minhaconta"to='/minhaconta/dados'>Seus dados</Link>
+                </ul>
                 <div>
                     <Outlet/>
                 </div>

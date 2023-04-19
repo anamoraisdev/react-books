@@ -2,7 +2,7 @@ import { AbBotao, AbCampoTexto, AbModal } from "ds-alurabooks"
 import { useState } from "react"
 import imagemPrincipal from "../ModalCadastroUsuario/assets/login.png"
 import './modalLogin.css';
-import axios from "axios";
+import axiosHttp from "../../http/axios";
 
 interface PropsModalLogin {
     aberta: boolean
@@ -18,15 +18,15 @@ const ModalLoginUsuario = ({aberta, aoFechar, aoFazerLogin} : PropsModalLogin) =
         evento?.preventDefault()
         const dadosLogin = {email,senha}
         
-        axios.post('http://localhost:8000/public/login', dadosLogin)
+        axiosHttp.post('public/login', dadosLogin)
         .then((resposta) => {
             sessionStorage.setItem('token', resposta.data.access_token)
             if(resposta?.data?.access_token){
+                aoFazerLogin()
+                setSenha('')
+                setEmail('')
+                aoFechar()
             }
-            aoFazerLogin()
-            setSenha('')
-            setEmail('')
-            aoFechar()
         })
         .catch((erro) => {
             if(erro?.response?.data?.messege){

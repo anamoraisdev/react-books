@@ -3,6 +3,7 @@ import { useState } from "react"
 import imagemPrincipal from './assets/login.png'
 import './ModalCadastroUsuario.css'
 import axios from "axios"
+import axiosHttp from "../../http/axios"
 
 
 interface PropsModalCadastro {
@@ -31,7 +32,7 @@ const ModalCadastroUsuario = ({aberta, aoFechar}: PropsModalCadastro) => {
             complemento
         }
 
-        axios.post('http://localhost:8000/public/registrar', usuario)
+        axiosHttp.post('public/registrar', usuario)
         .then(() => {
             alert('Usuário foi cadastrado com sucesso!')
             setNome('')
